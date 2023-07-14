@@ -9,8 +9,6 @@
             </span>
         <% end %>
     </div>
-
-    <p><%= truncate(article.content, length: 200) %></p>
     <p class="text-secondary"><%= article.created_at %></p>
     <%= link_to "Ver más", article %>
 </div>

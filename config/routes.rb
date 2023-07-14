@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :categories
   devise_for :users
   root to: "home#index"
+  get "perfil", to:"users#edit"
+  resources :users, only: [:update]
 
   #get "articles/user/:user_id", to: "articles#from_author"
 
