@@ -1,6 +1,16 @@
-<div class="card p-4">
-    <%= article.id %>
-    <h3 class="text-uppercase"><%= article.title %></h3>
+<div class="card p-4" style="margin-bottom: 30px; width: 80%">
+    <p class="text-secondary m-0"><%= article.id %></p>
+    <h4 class="text-uppercase"><%= article.title %></h4>
+
+    <div>
+        <% article.categories.each do |category| %>
+            <span class="badge badge-pill padding" style="background-color:<%= category.color %>">
+                <%= link_to category.title, category, class:"text-white"%>
+            </span>
+        <% end %>
+    </div>
+
+    <p><%= truncate(article.content, length: 200) %></p>
     <p class="text-secondary"><%= article.created_at %></p>
     <%= link_to "Ver más", article %>
 </div>

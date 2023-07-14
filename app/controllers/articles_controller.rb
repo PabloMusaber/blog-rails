@@ -35,6 +35,7 @@ class ArticlesController < ApplicationController
     end
 
     def destroy
+        @article.save_categories
         @article.destroy
         redirect_to root_path
     end
