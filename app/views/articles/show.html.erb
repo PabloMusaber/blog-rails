@@ -1,20 +1,21 @@
 <h1><%=@article.title%></h1>
 <div>
-    <p>Escrito por <strong><%=@article.user.email%></strong></p>
+        <% @article.categories.each do |category| %>
+            <span class="badge badge-pill padding" style="background-color:<%= category.color %>">
+                <%= link_to category.title, category, class:"text-white"%>
+            </span>
+        <% end %>
+    </div>
+<div>
+    <p>Escrito por <strong><%=@article.user.first_name%> <%=@article.user.last_name%></strong></p>
 </div>
 <div>
     <%=@article.content%>
 </div>
 
-<div>
-    <p class="label mt-4"><strong>Tags</strong></p>
-    <% @article.categories.each do |category| %>
-        <span class="badge badge-pill padding" style="background-color:<%= category.color %>">
-            <%= link_to category.title, category, class:"text-white"%>
-        </span>
-    <% end %>
-</div>
+<div class="mt-4">
+<%= link_to "Editar artículo", edit_article_path(@article), class: "btn btn-success" %> |
+<%=link_to "Eliminar el artículo", @article, method: :delete, class: "btn btn-danger"%> |
+<%= link_to 'Volver', articles_path, class: "btn btn-secondary" %>
 
-<div>
-<%=link_to "Eliminar el artículo", @article, method: :delete%>
 </div>

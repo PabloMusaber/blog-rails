@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Editar usuario</h2>
+
+    <% if current_user.avatar.attached? %>
+        <%= image_tag url_for(current_user.avatar), height:200 %>
+    <% end %>
+    <%= form_with(model: current_user, local: true) do |form| %>
+        <div class="field">
+            <%= form.label :avatar%><br />
+            <%= form.file_field :avatar%>
+        </div>
+
+        <div class="field" style="margin-top: 20px;">
+            <%= form.submit "Guardar", class: "btn btn-primary" %>
+            <%= link_to 'Volver', articles_path, class: "btn btn-secondary" %>
+        </div>
+    <% end %>
+</div>
