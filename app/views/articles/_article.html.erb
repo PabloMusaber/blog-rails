@@ -1,6 +1,12 @@
 <div class="card p-4" style="margin-bottom: 30px; width: 80%">
-    <p class="text-secondary m-0"><%= article.id %></p>
-    <h4 class="text-uppercase"><%= article.title %></h4>
+    <div class="d-flex">
+        <div>
+            <h4 class="text-uppercase" style="margin: auto;"><%= article.title %></h4>
+        </div>
+        <div class="ms-auto cointaner-foto">
+            <%= image_tag url_for(article.user.avatar), class: "card-img" %>
+        </div>
+    </div>
 
     <div>
         <% article.categories.each do |category| %>
