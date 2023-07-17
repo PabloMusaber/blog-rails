@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-    
     before_action :find_article, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
@@ -9,7 +8,7 @@ class ArticlesController < ApplicationController
 
     def show
     end
-    
+
     def edit
         @categories = Category.all
     end
@@ -27,9 +26,6 @@ class ArticlesController < ApplicationController
 
     def create
         @article = current_user.articles.create(article_params)
-
-        
-
         @article.save_categories
         redirect_to @article
     end
@@ -40,7 +36,7 @@ class ArticlesController < ApplicationController
         redirect_to root_path
     end
 
-    def from_author 
+    def from_author
         @user = User.find(params[:user_id])
     end
 
@@ -51,4 +47,5 @@ class ArticlesController < ApplicationController
     def article_params #Convención para nombrar el método de parámetros fuertes
         params.require(:article).permit(:title, :content, category_elements: [])
     end
+
 end

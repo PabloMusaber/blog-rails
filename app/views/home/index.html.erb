@@ -1,3 +1,5 @@
 <div class="container">
-    <h1>HOLA <%= current_user.email %></h1>
+    <h1>Bienvenido, <%= current_user.first_name %></h1>
+    <h3>Sus artículos publicados son:</h3>
+    <%= render @articles %>
 </div>
