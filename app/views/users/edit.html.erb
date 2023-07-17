@@ -1,14 +1,29 @@
 <div class="container">
     <h2>Editar usuario</h2>
 
-    <% if current_user.avatar.attached? %>
-        <%= image_tag url_for(current_user.avatar), height:200, class: "img-editar-perfil" %>
-    <% end %>
     <%= form_with(model: current_user, local: true) do |form| %>
-        <div class="field">
-            <%= form.label :avatar%><br />
+        <div class="field mb-2">
+            <strong><%= form.label :Nombre%></strong><br />
+            <%= form.text_field :first_name%>
+        </div>
+
+        <div class="field mb-2">
+            <strong><%= form.label :Apellido%></strong><br />
+            <%= form.text_field :last_name%>
+        </div>
+
+        <div class="field mb-2">
+            <strong><%= form.label :Email%></strong><br />
+            <%= form.text_field :email%>
+        </div>
+
+        <div class="field mb-2">
+            <strong><%= form.label :avatar%></strong><br />
             <%= form.file_field :avatar%>
         </div>
+        <% if current_user.avatar.attached? %>
+            <%= image_tag url_for(current_user.avatar), height:200, class: "img-editar-perfil" %>
+        <% end %>
 
         <div class="field" style="margin-top: 20px;">
             <%= form.submit "Guardar", class: "btn btn-primary" %>
