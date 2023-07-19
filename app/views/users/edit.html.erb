@@ -25,6 +25,20 @@
             <%= image_tag url_for(current_user.avatar), height:200, class: "img-editar-perfil" %>
         <% end %>
 
+        <div class="field">
+            <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= form.password_field :password, autocomplete: "new-password" %>
+            <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+            <% end %>
+        </div>
+
+        <div class="field">
+            <%= form.label :password_confirmation %><br />
+            <%= form.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+
         <div class="field" style="margin-top: 20px;">
             <%= form.submit "Guardar", class: "btn btn-primary" %>
             <%= link_to 'Volver', articles_path, class: "btn btn-secondary" %>

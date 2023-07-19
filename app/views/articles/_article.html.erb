@@ -15,6 +15,7 @@
             </span>
         <% end %>
     </div>
+    <p class="mt-2"><%= article.content.to_plain_text.truncate(400) %></p>
     <p class="text-secondary"><%= article.created_at %></p>
     <%= link_to "Ver más", article %>
 </div>
