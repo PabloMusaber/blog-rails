@@ -5,6 +5,7 @@ class Article < ApplicationRecord
     has_many :categories, through: :has_categories
     validates :title, presence: true
     validates :content, presence: true
+    validates :has_categories, presence: true
 
     attr_accessor :category_elements
 
