@@ -4,12 +4,12 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :first_name %><br />
+    <%= f.label :Nombre %><br />
     <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.label :Apellido %><br />
     <%= f.text_field :last_name %>
   </div>
 
@@ -19,21 +19,25 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :Contraseña %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caracteres como mínimo)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :Confirmar_de_contraseña %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Regístrate", class: "btn btn-primary my-2" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Iniciar sesión", new_session_path(resource_name), class: "btn btn-secondary"  %><br />
+<% end %>
+
+<%#= render "devise/shared/links" %>
