@@ -14,21 +14,15 @@ class ArticlesController < ApplicationController
     end
 
     def update
-        @article.update(article_params)
-        @article.save_categories
-        redirect_to @article
+        if @article.update(article_params)
+            @article.save_categories
+            redirect_to @article
+        else
+            @categories = Category.all
+            flash[:alert] = @article.errors.full_messages
+            render :edit
+        end
     end
-
-    # def update
-    #     if @article.update(article_params)
-    #         @article.save_categories
-    #         redirect_to @article
-    #     else
-    #         @categories = Category.all
-    #         flash[:alert] = @article.errors.full_messages
-    #         render :edit
-    #     end
-    # end
 
     def new
         @article = Article.new
