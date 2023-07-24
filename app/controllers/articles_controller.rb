@@ -19,6 +19,17 @@ class ArticlesController < ApplicationController
         redirect_to @article
     end
 
+    # def update
+    #     if @article.update(article_params)
+    #         @article.save_categories
+    #         redirect_to @article
+    #     else
+    #         @categories = Category.all
+    #         flash[:alert] = @article.errors.full_messages
+    #         render :edit
+    #     end
+    # end
+
     def new
         @article = Article.new
         @categories = Category.all
@@ -26,9 +37,7 @@ class ArticlesController < ApplicationController
 
     def create
         @article = current_user.articles.new(article_params)
-        if !@article.errors
-            @article.save_categories
-        end
+        @article.save_categories
         if @article.save
             redirect_to @article
         else

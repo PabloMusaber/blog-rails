@@ -5,7 +5,7 @@ class Article < ApplicationRecord
     has_many :categories, through: :has_categories
     validates :title, presence: true
     validates :content, presence: true
-    validates :has_categories, presence: true
+    validates :category_elements, presence: true
 
     attr_accessor :category_elements
 
@@ -15,7 +15,9 @@ class Article < ApplicationRecord
         has_categories.where.not(category_id: category_elements).destroy_all
 
         category_elements.each do |category_id|
-            HasCategory.find_or_create_by(article: self, category_id: category_id)
+            if self.valid?
+                HasCategory.find_or_create_by(article: self, category_id: category_id)
+            end
         end
     end
 
