@@ -19,7 +19,6 @@ class ArticlesController < ApplicationController
             redirect_to @article
         else
             @categories = Category.all
-            flash[:alert] = @article.errors.full_messages
             render :edit
         end
     end
@@ -36,7 +35,6 @@ class ArticlesController < ApplicationController
             redirect_to @article
         else
             @categories = Category.all
-            flash[:alert] = @article.errors.full_messages
             render :new
         end
     end

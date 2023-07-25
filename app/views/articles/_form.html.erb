@@ -1,7 +1,7 @@
-<%= form_with(model: @article, local: true) do |form| %>
+<%= simple_form_for @article do |form| %>
     <div>
-    <strong><%= form.label :Titulo %></strong><br />
-    <%= form.text_field  :title %>
+        <strong><%= form.label :Titulo %></strong><br />
+        <%= form.input  :title, label: false, error: 'Este campo es obligatorio.' %>
     </div>
 
     <div>
@@ -9,8 +9,11 @@
         <div class="row">
             <% @categories.each do |category| %>
             <label class="col-2">
-                <%= form.check_box :category_elements, {multiple: true}, category.id, nil %>
-                <%= category.title %>
+                <%#= form.check_box :category_elements, {multiple: true}, category.id, nil %>
+                <%= form.input :category_elements, label: category.title, as: :boolean, collection: [category],
+                checked_value: category.id, unchecked_value: nil, required: false,
+                input_html: { multiple: true }, error: "Debe seleccionar al menos una categoría." %>
+                <%#= category.title %>
             </label>
             <% end %>
         </div>
@@ -18,7 +21,7 @@
 
     <div>
     <strong><%= form.label :Cuerpo, class: "mt-4" %></strong>
-    <%= form.rich_text_area  :content %>
+    <%= form.input  :content,as: :rich_text_area, label: false, error: "Este campo es obligatorio." %>
     </div>
 
     <div style="margin-top: 20px">
