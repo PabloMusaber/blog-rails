@@ -1,0 +1,11 @@
+<div class="card p-2" style="margin-bottom: 10px; width: 100%">
+    <div class="d-flex">
+        <div>
+            <p class="mt-2"><%= comment.content %></p>
+        </div>
+        <div class="ms-auto cointaner-foto">
+            <%= image_tag url_for(comment.user.avatar), class: "card-img" %>
+        </div>
+    </div>
+    <p class="text-secondary" style="margin: 0;"><%= comment.created_at %></p>
+</div>

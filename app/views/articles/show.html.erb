@@ -5,13 +5,17 @@
                 <%= link_to category.title, category, class:"text-white"%>
             </span>
         <% end %>
-    </div>
-<div>
-    <p>Escrito por <strong><%=@article.user.first_name%> <%=@article.user.last_name%></strong></p>
 </div>
-<div>
+<div class="mt-3">
+    <p>Escrito por <strong><%=@article.user.first_name%> <%=@article.user.last_name%></strong>
+    <%= image_tag url_for(@article.user.avatar), class: "cointaner-foto-detail"%>
+    </p>
+</div>
+<div class="mb-4">
     <%=@article.content%>
 </div>
+
+<%= render @comments %>
 
 <div class="mt-4">
 <% if  user_signed_in? && @article.user.email === current_user.email%>

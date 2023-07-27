@@ -1,0 +1,21 @@
+<%= simple_form_for(@comment) do |form| %>
+    <div>
+        <strong><%= form.label :Artículo %></strong><br />
+        <%= form.input  :article_id, label: false, error: 'Este campo es obligatorio.' %>
+    </div>
+
+    <div>
+        <strong><%= form.label :User_id %></strong><br />
+        <%= form.input  :user_id, label: false, error: 'Este campo es obligatorio.' %>
+    </div>
+
+    <div>
+    <strong><%= form.label :Comentario, class: "mt-4" %></strong>
+    <%= form.input  :content, label: false, error: "Este campo es obligatorio." %>
+    </div>
+
+    <div style="margin-top: 20px">
+    <%= form.submit "Guardar", class: "btn btn-primary" %>
+    <%= link_to 'Volver', articles_path, class: "btn btn-secondary" %>
+    </div>
+<% end %>

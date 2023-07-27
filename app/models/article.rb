@@ -3,6 +3,8 @@ class Article < ApplicationRecord
     belongs_to :user #Campo adicional
     has_many :has_categories, dependent: :destroy
     has_many :categories, through: :has_categories
+    has_many :comments
+
     validates :title, presence: true
     validates :content, presence: true
     validates :category_elements, presence: true
