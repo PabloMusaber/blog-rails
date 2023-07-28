@@ -43,18 +43,13 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def destroy
+    @article = @comment.article
     @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to article_url(@article), notice: "Su comentario fue eliminado correctamente."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
     end
@@ -63,4 +58,5 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:article_id, :content)
     end
+
 end
