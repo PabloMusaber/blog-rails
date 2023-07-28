@@ -1,15 +1,16 @@
 <div class="card p-2" style="margin-bottom: 10px; width: 100%">
-    <div class="d-flex">
+    <div class="">
+        <p class="m-2">
+            <%= image_tag url_for(comment.user.avatar), class: "cointaner-foto-detail" %>
+            <strong><%=comment.user.first_name%> <%=comment.user.last_name%></strong> |
+            <span class="text-secondary" style="font-size: 14px;"><%= comment.created_at.strftime("%d-%m-%Y") %></span>
+        </p>
         <div>
-            <p class="mt-2"><%= comment.content %>
+            <p class="mx-2" style="margin: 0;"><%= comment.content %>
             <% if  user_signed_in? && comment.user.email === current_user.email%>
-                <%=link_to "Eliminar comentario", comment, method: :delete, class: "btn btn-danger"%>
+                <%=link_to "Eliminar comentario", comment, method: :delete, class: "mx-2 btn btn-danger"%>
             <% end %>
             </p>
         </div>
-        <div class="ms-auto cointaner-foto">
-            <%= image_tag url_for(comment.user.avatar), class: "card-img" %>
-        </div>
     </div>
-    <p class="text-secondary" style="margin: 0;"><%= comment.created_at %></p>
 </div>
