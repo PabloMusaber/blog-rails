@@ -1,8 +1,8 @@
 <%= simple_form_for @comment do |form| %>
     <%= form.hidden_field  :article_id, value: @comment.article_id %>
     <div>
-        <strong><%= form.label :Comentario, class: "mt-4" %></strong>
-        <%= form.input  :content, label: false, error: "Este campo es obligatorio." %>
+        <strong><%= form.label :Escribe_un_comentario, class: "mt-4" %></strong>
+        <%= form.input  :content, label: false, error: "Este campo es obligatorio.", placeholder: "Escribe un comentario" %>
     </div>
 
     <div style="margin-top: 20px">

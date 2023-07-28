@@ -26,8 +26,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to article_url(@comment.article), notice: "Comment was successfully created."
     else
-      flash[:alert] = @comment.errors.full_messages
-      redirect_to article_url(@comment.article)
+      @article = @comment.article
+      render "articles/show", locals: { article: @article }
     end
   end
 
