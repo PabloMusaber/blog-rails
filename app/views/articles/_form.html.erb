@@ -9,11 +9,9 @@
         <div class="row">
             <% @categories.each do |category| %>
             <label class="col-2">
-                <%#= form.check_box :category_elements, {multiple: true}, category.id, nil %>
                 <%= form.input :category_elements, label: category.title, as: :boolean, collection: [category],
                 checked_value: category.id, unchecked_value: nil, required: false,
                 input_html: { multiple: true }, error: "Debe seleccionar al menos una categoría." %>
-                <%#= category.title %>
             </label>
             <% end %>
         </div>
