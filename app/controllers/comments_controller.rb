@@ -2,36 +2,35 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
-  # GET /comments or /comments.json
   def index
     @comments = Comment.all
   end
 
-  # GET /comments/1 or /comments/1.json
+
   def show
   end
 
-  # GET /comments/new
+
   def new
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
+
   def edit
   end
 
-  # POST /comments or /comments.json
+
   def create
     @comment = current_user.comments.new(comment_params)
     if @comment.save
-      redirect_to article_url(@comment.article), notice: "Comment was successfully created."
+      redirect_to article_url(@comment.article), notice: "Su comentario fue publicado correctamente."
     else
       @article = @comment.article
       render "articles/show", locals: { article: @article }
     end
   end
 
-  # PATCH/PUT /comments/1 or /comments/1.json
+
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -44,7 +43,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1 or /comments/1.json
+
   def destroy
     @comment.destroy
 
