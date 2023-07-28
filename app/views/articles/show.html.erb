@@ -18,6 +18,8 @@
 <h4>Comentarios</h4>
 <%= render @comments %>
 
+<%= render "comments/form", comment: @comment %>
+
 <div class="mt-4">
 <% if  user_signed_in? && @article.user.email === current_user.email%>
     <%= link_to "Editar artículo", edit_article_path(@article), class: "btn btn-success" %> |
