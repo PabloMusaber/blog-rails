@@ -1,24 +1,20 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @comments = Comment.all
   end
 
-
   def show
   end
-
 
   def new
     @comment = Comment.new
   end
 
-
   def edit
   end
-
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -29,7 +25,6 @@ class CommentsController < ApplicationController
       render "articles/show", locals: { article: @article }
     end
   end
-
 
   def update
     respond_to do |format|
@@ -50,13 +45,13 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.require(:comment).permit(:article_id, :content)
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.require(:comment).permit(:article_id, :content)
+  end
 end
