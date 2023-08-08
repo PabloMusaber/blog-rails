@@ -1,16 +1,23 @@
 <div class="card p-2" style="margin-bottom: 10px; width: 100%">
     <div class="">
-        <p class="m-2">
-            <%= image_tag url_for(comment.user.avatar), class: "cointaner-foto-detail" %>
-            <strong><%=comment.user.first_name%> <%=comment.user.last_name%></strong> |
-            <span class="text-secondary" style="font-size: 14px;"><%= comment.created_at.strftime("%d-%m-%Y") %></span>
-        </p>
+        <div class="d-flex">
+            <div>
+                <p class="m-2">
+                    <%= image_tag url_for(comment.user.avatar), class: "cointaner-foto-detail" %>
+                    <strong><%=comment.user.first_name%> <%=comment.user.last_name%></strong> |
+                    <span class="text-secondary" style="font-size: 14px;"><%= comment.created_at.strftime("%d-%m-%Y") %></span>
+                </p>
+            </div>
+            <div>
+                <% if user_signed_in? && comment.user.email === current_user.email %>
+                    <%= button_to comment_path(comment), method: :delete, class: "mx-2 btn btn-danger" do %>
+                        <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
         <div>
-            <p class="mx-2" style="margin: 0;"><%= comment.content %>
-            <% if  user_signed_in? && comment.user.email === current_user.email%>
-                <%=link_to "Eliminar comentario", comment, method: :delete, class: "mx-2 btn btn-danger"%>
-            <% end %>
-            </p>
+            <p class="mx-2" style="margin: 0;"><%= comment.content %></p>
         </div>
     </div>
 </div>
