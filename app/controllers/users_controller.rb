@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def edit
-  end
+  def edit; end
 
   def update
     current_user.update(user_params)

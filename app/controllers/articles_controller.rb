@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
-  before_action :find_article, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :find_article, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
     @articles = Article.all
@@ -54,7 +56,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
   end
 
-  def article_params # Convención para nombrar el método de parámetros fuertes
+  # Convención para nombrar el método de parámetros fuertes
+  def article_params
     params.require(:article).permit(:title, :content, category_elements: [])
   end
 end

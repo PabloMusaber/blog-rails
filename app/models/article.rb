@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Article < ApplicationRecord
   has_rich_text :content
   belongs_to :user # Campo adicional
@@ -17,9 +19,7 @@ class Article < ApplicationRecord
     has_categories.where.not(category_id: category_elements).destroy_all
 
     category_elements.each do |category_id|
-      if self.valid?
-        HasCategory.find_or_create_by(article: self, category_id: category_id)
-      end
+      HasCategory.find_or_create_by(article: self, category_id: category_id) if valid?
     end
   end
 end
