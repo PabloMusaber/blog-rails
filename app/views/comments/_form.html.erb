@@ -7,10 +7,14 @@
 
     <div class="d-flex" style="margin-top: 20px">
         <div>
-            <%= form.submit "Guardar", class: "btn btn-primary" %>
+            <%= link_to articles_path, class: "btn btn-secondary" do%>
+                <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+            <% end %>
         </div>
         <div class="ms-auto">
-            <%= link_to 'Volver', articles_path, class: "btn btn-secondary" %>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-floppy-disk" style="color: #ffffff;"></i>
+            </button>
         </div>
     </div>
 <% end %>
