@@ -14,6 +14,8 @@ gem 'bootstrap'
 gem 'font-awesome-sass'
 
 gem 'rubocop', require: false
+gem 'rubocop-capybara', require: false
+gem 'rubocop-rails', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4'
