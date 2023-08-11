@@ -5,5 +5,9 @@ class HomeController < ApplicationController
 
   def index
     @articles = current_user.articles
+    respond_to do |format|
+      format.html
+      format.pdf { render template: 'articles/reporte', pdf: 'mis_articulos' }
+    end
   end
 end

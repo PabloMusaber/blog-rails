@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'home#index'
+  get 'index.pdf', to: 'home#index', as: 'pdf'
 
   get 'perfil', to: redirect('users/edit')
 

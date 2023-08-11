@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Artículos PDF</title>
+    <%= wicked_pdf_stylesheet_link_tag 'pdf' %>
+</head>
+<body>
+<div class="container">
+    <h1>Artículos publicados por: <%= current_user.first_name %> <%= current_user.last_name %></h1>
+    <div class="seccion-articulos">
+        <% @articles.each do |article| %>
+    <div class="article">
+      <div class="title">
+        <%= article.title %>
+        <div class="date">
+            <%= article.created_at.strftime("%d-%m-%Y") %>
+        </div>
+      </div>
+      <div class="content">
+        <%= article.content %><br>
+      </div>
+    </div>
+  <% end %>
+    </div>
+</div>
+</body>
+
+</html>
+

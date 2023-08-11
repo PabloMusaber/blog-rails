@@ -2,4 +2,7 @@
     <h1>Bienvenido, <%= current_user.first_name %></h1>
     <h3>Sus artículos publicados son:</h3>
     <%= render @articles %>
+    <%= link_to pdf_path, class: "mx-2 btn btn-success", target: "_blank" do %>
+        <i class="fa-solid fa-file-export" style="color: #ffffff; padding-right: 5px;"></i> Exportar artículos como PDF
+    <% end %>
 </div>
