@@ -4,7 +4,9 @@
             <h4 class="text-uppercase" style="margin: auto;"><%= article.title %></h4>
         </div>
         <div class="ms-auto cointaner-foto">
+        <% if article.user.avatar.attached? %>
             <%= image_tag url_for(article.user.avatar), class: "card-img" %>
+        <% end %>
         </div>
     </div>
 
